@@ -5,6 +5,5 @@ namespace CommandService.Dtos
   {
     public string HowTo { get; set; }
     public string Commandline { get; set; }
-
   }
 }
