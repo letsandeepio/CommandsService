@@ -1,3 +1,4 @@
+using System.Net;
 using AutoMapper;
 using CommandService.Models;
 using Grpc.Net.Client;
@@ -18,6 +19,11 @@ namespace CommandService.SyncDataServices.Grpc
     public IEnumerable<Platform> ReturnAllPlatforms()
     {
       Console.WriteLine($"--> Calling GRPC Service {_configuration["GrpcPlatform"]}");
+
+
+      var noProxy = Environment.GetEnvironmentVariable("no_proxy");
+
+      Console.WriteLine($"ProxValue {noProxy}");
 
       var channel = GrpcChannel.ForAddress(_configuration["GrpcPlatform"]);
       var client = new GrpcPlatform.GrpcPlatformClient(channel);
